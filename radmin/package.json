@@ -4,7 +4,9 @@
   "description": "Mobius ====== **Mobius is a platform that ties together Jmbo and Mote.**",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --progress --colors",
+    "build:watch": "webpack --watch --progress --colors",
+    "build:production": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -26,12 +28,21 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.4.1",
     "eslint": "^3.3.1",
     "eslint-loader": "^1.5.0",
+    "istanbul": "^0.4.4",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
     "node-sass": "^3.8.0",
     "sass-lint": "^1.8.2",
     "sass-loader": "^4.0.0",
     "sasslint-webpack-plugin": "^1.0.4",
+    "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-bundle-tracker": "0.0.93",
