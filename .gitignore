@@ -12,3 +12,6 @@ pep8.txt
 photologue/
 db.sqlite3
 .idea/
+node_modules
+bower_components
+sass_cache
