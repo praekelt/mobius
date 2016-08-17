@@ -1,0 +1,23 @@
+{
+  "name": "mobius",
+  "version": "1.0.0",
+  "description": "Mobius ====== **Mobius is a platform that ties together Jmbo and Mote.**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praekelt/mobius.git"
+  },
+  "author": "Chris Sergienko <chris@praekeltconsulting.com> (http://www.praekelt.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/praekelt/mobius/issues"
+  },
+  "homepage": "https://github.com/praekelt/mobius#readme",
+  "devDependencies": {
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
