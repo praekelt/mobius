@@ -12,3 +12,5 @@ pep8.txt
 photologue/
 .idea/
 .coverage
+*.sqlite3
+*.db
