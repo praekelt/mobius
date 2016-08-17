@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --progress --colors",
     "build:watch": "webpack --watch --progress --colors",
-    "build:production": "webpack -p"
+    "build:production": "webpack -p",
+    "test:karma": "karma"
   },
   "repository": {
     "type": "git",
