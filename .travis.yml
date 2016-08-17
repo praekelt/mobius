@@ -1,0 +1,12 @@
+sudo: false
+language: python
+cache: pip
+
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+  - pip install coverage==4.0.3
+script:
+  - coverage run ./mysite/manage.py test mysite.tests --settings=mysite.tests.settings
+  - coverage report

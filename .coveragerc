@@ -1,0 +1,9 @@
+[run]
+branch = True
+source =
+    mysite
+omit = 
+    */migrations/*
+[report]
+show_missing = True
+
