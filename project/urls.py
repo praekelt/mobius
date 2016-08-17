@@ -25,6 +25,7 @@ urlpatterns = [
     url(r"^", include("mobius.urls")),
     url(r"^api/(?P<version>(v1))/", include(router.urls)),
     url(r"^admin/", include(admin.site.urls)),
+    url(r"^radmin/", include("radmin.urls")),
     url(r"^jmbo/", include("jmbo.urls")),
     url(r"^comments/", include("django_comments.urls")),
     url(r"^post/", include("post.urls")),
