@@ -15,7 +15,7 @@ var modulesDirectories = ['./node_modules/'];
 var excludes = /node_modules/;
 
 module.exports = {
-    'devtool': 'source-map',
+    //'devtool': 'source-map',
     'target': 'web',
     'context': __dirname,
     'resolve': {
@@ -46,11 +46,6 @@ module.exports = {
         ],
         'loaders': [
             {
-                'test': /\.js$/,
-                'loaders': ['react-hot'],
-                'exclude': excludes
-            },
-            {
                 'test': /\.css$/,
                 'loader': 'style?singleton!css?sourceMap!postcss-loader',
                 'exclude': excludes
@@ -65,7 +60,6 @@ module.exports = {
                 'loader': 'babel-loader',
                 'exclude': excludes
             }
-
         ]
     },
     'plugins': [
@@ -76,8 +70,8 @@ module.exports = {
             'dry': false
         }),
         new Webpack.DefinePlugin({
-            '__DEV__': JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-            '__PRERELEASE__': JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+            '__DEV__': JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'false')),
+            '__PRERELEASE__': JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'true'))
         }),
         new SassLintPlugin({
             'configFile': './.sass-lint.yml',
@@ -85,9 +79,9 @@ module.exports = {
             'failOnError': false,
             'failOnWarning': false
         }),
+
         new BundleTracker({path: __dirname, filename: './webpack-map.json'}),
         new Webpack.optimize.OccurrenceOrderPlugin(),
-        new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NoErrorsPlugin()
     ],
     // 'postcss': function() {
@@ -102,7 +96,7 @@ module.exports = {
     //     'importer': SassJsonImporter
     // },
     'uglify-loader': {
-        'mangle': false
+        'mangle': true
     },
     'babel-loader': {
         'cacheDirectory': true,
