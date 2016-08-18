@@ -7,7 +7,8 @@
     "build": "webpack --progress --colors",
     "build:watch": "webpack --watch --progress --colors",
     "build:production": "webpack -p",
-    "test:karma": "karma"
+    "test:karma": "karma",
+    "hot": "node ./hot-module-server.js"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "karma": "^1.2.0",
     "karma-chrome-launcher": "^1.0.1",
     "karma-mocha": "^1.1.1",
+    "karma-webpack": "^1.8.0",
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
     "node-sass": "^3.8.0",
