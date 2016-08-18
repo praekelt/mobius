@@ -7,7 +7,7 @@
     "build": "webpack --progress --colors",
     "build:watch": "webpack --watch --progress --colors",
     "build:production": "webpack -p",
-    "test:karma": "./node_modules/karma/bin/karma start karma.conf.js"
+    "test:karma": "./node_modules/karma/bin/karma start karma.conf.js",
     "hot": "node ./hot-module-server.js"
   },
   "repository": {
