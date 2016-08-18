@@ -20,6 +20,7 @@ django-preferences==0.0.2
 django-sites-groups==1.9.2
 django-sortedm2m==1.2.2
 #django-ultracache==1.9.0
+django-webpack-loader==0.3.3
 ExifRead==2.1.2
 Pillow==3.2.0
 #psycopg2==2.6.1
