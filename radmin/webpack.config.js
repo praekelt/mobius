@@ -8,7 +8,7 @@ var Webpack = require('webpack'),
 
 var paths = {
     'src': __dirname + '/staticsrc/',
-    'dist': __dirname + '/static/radmin/bundles/'
+    'dist': __dirname + '/static/bundles/'
 }
 
 var modulesDirectories = ['./node_modules/'];
@@ -28,16 +28,13 @@ module.exports = {
         ]
     },
     'entry': [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
         paths.src + 'radmin.js',
     ],
     'output': {
         'path': paths.dist,
         'filename': '[name]-[hash].js',
         'chunkFilename': 'chunk-[name]-[chunkhash].js',
-        //'publicPath': '/static/web/bundles/',
-        'publicPath': 'http://localhost:3000/static/bundles/',
+        'publicPath': '/static/bundles/'
     },
     'module': {
         'preLoaders': [
