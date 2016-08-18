@@ -1,14 +1,14 @@
 var Webpack = require('webpack'),
-    Autoprefixer = require('autoprefixer'),
-    CssNano = require('cssnano'),
+    // Autoprefixer = require('autoprefixer'),
+    // CssNano = require('cssnano'),
     CleanWebpackPlugin = require('clean-webpack-plugin'),
     BundleTracker = require('webpack-bundle-tracker'),
-    SassJsonImporter = require('node-sass-json-importer'),
+    // SassJsonImporter = require('node-sass-json-importer'),
     SassLintPlugin = require('sasslint-webpack-plugin');
 
 var paths = {
-    'src': __dirname + '/app/',
-    'dist': __dirname + '/static/quizzical/bundles/'
+    'src': __dirname + '/staticsrc/',
+    'dist': __dirname + '/static/radmin/bundles/'
 }
 
 var modulesDirectories = ['./node_modules/'];
@@ -30,7 +30,7 @@ module.exports = {
     'entry': [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        paths.src + 'quizzical.js',
+        paths.src + 'radmin.js',
     ],
     'output': {
         'path': paths.dist,
@@ -65,11 +65,8 @@ module.exports = {
             },
             {
                 'test': /\.js$/,
-                'loader': 'babel',
-                'exclude': excludes,
-                'query': {
-                    'presets': ['es2015', 'react', 'stage-0', 'react-hmre']
-                }
+                'loader': 'babel-loader',
+                'exclude': excludes
             }
 
         ]
@@ -91,22 +88,22 @@ module.exports = {
             'failOnError': false,
             'failOnWarning': false
         }),
-        new BundleTracker({path: __dirname, filename: '../webpack-quizzical-map.json'}),
+        new BundleTracker({path: __dirname, filename: './webpack-map.json'}),
         new Webpack.optimize.OccurrenceOrderPlugin(),
         new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NoErrorsPlugin()
     ],
-    'postcss': function() {
-        return [Autoprefixer({
-            'browsers': ['> 1%', 'IE 7', 'IE 8', 'IE 9']
-        }), CssNano];
-    },
-    'sassLoader': {
-        'precision': 3,
-        'indentWidth': 4,
-        'includePaths': modulesDirectories,
-        'importer': SassJsonImporter
-    },
+    // 'postcss': function() {
+    //     return [Autoprefixer({
+    //         'browsers': ['> 1%', 'IE 7', 'IE 8', 'IE 9']
+    //     }), CssNano];
+    // },
+    // 'sassLoader': {
+    //     'precision': 3,
+    //     'indentWidth': 4,
+    //     'includePaths': modulesDirectories,
+    //     'importer': SassJsonImporter
+    // },
     'uglify-loader': {
         'mangle': false
     },
