@@ -1,0 +1,8 @@
+buildscript: scripts/build
+postinstall: scripts/postinstall.sh
+pip:
+  - psycopg2
+dependencies:
+  - nginx
+  - postgresql-server-dev-all
+  - postgresql
