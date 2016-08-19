@@ -12,3 +12,5 @@ var HelloMessage = React.createClass({
 });
 
 render(<HelloMessage/>, document.getElementById('radmin'));
+
+module.hot.accept()
