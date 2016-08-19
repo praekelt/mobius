@@ -7,7 +7,7 @@ class Command(BaseCommand):
         parser.add_argument('app_name', nargs='+', type=str)
 
     def handle(self, *args, **options):
-        callString = "cd %s && npm run build" % options["app_name"][0]
+        callString = "cd %s && nvm use && npm run build" % options["app_name"][0]
         try:
             subprocess.check_call(callString, shell=True)
         except subprocess.CalledProcessError:
