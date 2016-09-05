@@ -20,6 +20,8 @@ INSTALLED_APPS = (
     "ckeditor",
     "django_comments",
     "likes",
+    "link",
+    "navbuilder",
     "secretballot",
     "pagination",
     "post",

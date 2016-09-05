@@ -5,6 +5,8 @@
 -e git+https://github.com/hedleyroos/django-secretballot.git#egg=django-secretballot
 -e git+https://github.com/praekelt/django-ultracache.git@develop#egg=django-ultracache
 -e git+https://github.com/praekelt/django-likes.git@develop#egg=django-likes
+-e git+https://github.com/praekelt/django-link.git@develop#egg=django-link
+-e git+https://github.com/praekelt/django-navbuilder.git@develop#egg=django-navbuilder
 
 Django==1.9.6
 django-category==1.9
