@@ -22,12 +22,14 @@ post_api.register(router)
 admin.autodiscover()
 
 urlpatterns = [
-    url(r"^", include("mobius.urls")),
+    url(r"^", include("mobius.urls", namespace="mobius")),
     url(r"^api/(?P<version>(v1))/", include(router.urls)),
     url(r"^admin/", include(admin.site.urls)),
-    url(r"^jmbo/", include("jmbo.urls")),
-    url(r"^comments/", include("django_comments.urls")),
-    url(r"^post/", include("post.urls")),
+    url(r"^jmbo/", include("jmbo.urls", namespace="jmbo")),
+    url(r"^comments/", include("django_comments.urls", namespace="comments")),
+    url(r"^post/", include("post.urls", namespace="post")),
+    url(r"^link/", include("link.urls")),
+    url(r"^navbuilder/", include("navbuilder.urls")),
     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
 ]
