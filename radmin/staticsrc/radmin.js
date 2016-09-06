@@ -20,6 +20,7 @@ var AdminForm = React.createClass({
 
     onUpdate: function(key, value) {
         this.state[key] = value;
+        this.setState({key: value});
     },
 
     handleSubmit: function (event) {
@@ -33,7 +34,11 @@ var AdminForm = React.createClass({
                 password: this.state.password
             },
             success: function (resp) {
-                this.setState({result: 'Your token ' + resp.token});
+                this.setState({
+                    result: 'Your token ' + resp.token,
+                    username: '',
+                    password: ''
+                });
             }.bind(this),
             error: function (err) {
                 this.setState({result: 'Invalid credentials'});
@@ -46,9 +51,11 @@ var AdminForm = React.createClass({
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <InputField type="username"
+                                value={this.state.username}
                                 onChange={this.onUpdate}
                     />
                     <InputField type="password"
+                                value={this.state.password}
                                 onChange={this.onUpdate}
                     />
                     <SubmitButton/>
