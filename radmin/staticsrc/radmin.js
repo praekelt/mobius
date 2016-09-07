@@ -4,68 +4,28 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import InputField from './components/atoms/InputField';
-import SubmitButton from './components/atoms/SubmitButton';
-import Reqwest from 'reqwest';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
-var AdminForm = React.createClass({
+import auth from 'utils/auth';
 
-    getInitialState: function() {
-        return {
-            username: 'enter username',
-            password: 'password',
-            result: ''
-        };
-    },
+import LoginForm from 'components/organisms/LoginForm';
+import App from 'components/App';
 
-    onUpdate: function(key, value) {
-        this.state[key] = value;
-        this.setState({key: value});
-    },
-
-    handleSubmit: function (event) {
-        event.preventDefault();
-        Reqwest({
-            url: '/api-auth/',
-            type: 'json',
-            method: 'post',
-            data: {
-                username: this.state.username,
-                password: this.state.password
-            },
-            success: function (resp) {
-                this.setState({
-                    result: 'Your token ' + resp.token,
-                    username: '',
-                    password: ''
-                });
-            }.bind(this),
-            error: function (err) {
-                this.setState({result: 'Invalid credentials'});
-            }.bind(this)
-        });
-    },
-
-    render: function () {
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <InputField type="username"
-                                value={this.state.username}
-                                onChange={this.onUpdate}
-                    />
-                    <InputField type="password"
-                                value={this.state.password}
-                                onChange={this.onUpdate}
-                    />
-                    <SubmitButton/>
-                </form>
-                <h2>{this.state.result}</h2>
-            </div>
-        );
+function requireAuth(nextState, replace) {
+    if (!auth.loggedIn()) {
+        replace({
+            pathname:'/radmin/login/',
+            state: {nextPathname: '/radmin/'}
+        })
     }
-});
+}
 
-render(<AdminForm/>, document.getElementById('radmin'));
+render(
+    <Router history={browserHistory}>
+        <Route path='/radmin/login/' component={LoginForm} />
+        <Route path='/radmin/' component={App} onEnter={requireAuth} />
+    </Router>,
+    document.getElementById('radmin')
+);
 
 module.hot.accept()

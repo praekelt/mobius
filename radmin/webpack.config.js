@@ -11,7 +11,7 @@ var paths = {
     'dist': __dirname + '/static/bundles/'
 }
 
-var modulesDirectories = ['./node_modules/'];
+var modulesDirectories = ['./staticsrc/', './node_modules/'];
 var excludes = /node_modules/;
 
 module.exports = {
