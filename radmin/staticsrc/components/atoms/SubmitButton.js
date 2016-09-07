@@ -14,5 +14,3 @@ var SubmitButton = React.createClass({
 });
 
 module.exports = SubmitButton;
-
-module.hot.accept();

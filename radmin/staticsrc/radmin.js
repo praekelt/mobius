@@ -20,7 +20,6 @@ function requireAuth(nextState, replace) {
     }
 }
 
-
 render(
     <Router history={browserHistory}>
         <Route path='/radmin/login/' component={LoginForm} />
@@ -29,4 +28,6 @@ render(
     document.getElementById('radmin')
 );
 
-module.hot.accept()
+if (module.hot !== undefined){
+    module.hot.accept();
+}

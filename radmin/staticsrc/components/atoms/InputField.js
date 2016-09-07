@@ -20,5 +20,3 @@ var InputField = React.createClass({
 });
 
 module.exports = InputField;
-
-module.hot.accept();
