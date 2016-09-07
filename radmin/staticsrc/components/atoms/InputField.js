@@ -12,6 +12,7 @@ var InputField = React.createClass({
             <div>
                 <input type={this.props.type === 'password' ? 'password' : 'text'}
                        value={this.props.value}
+                       placeholder={this.props.type}
                        onChange={this.handleChange}/>
             </div>
         );

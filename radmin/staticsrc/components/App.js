@@ -1,14 +1,25 @@
 import React from 'react';
+import { withRouter } from 'react-router'
+
+import auth from 'utils/auth';
+
+import Listing from 'components/organisms/Listing';
 
 var App = React.createClass({
+
+    logoutHandler: function() {
+        auth.logout()
+        this.props.router.replace('/radmin/login/')
+    },
 
     render: function () {
         return (
             <div>
-                <h1>You are now logged in</h1>
+                <Listing/>
+                <button onClick={this.logoutHandler}>Log out</button>
             </div>
         );
     }
 });
 
-module.exports = App;
+module.exports = withRouter(App);
