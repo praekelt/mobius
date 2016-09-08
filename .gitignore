@@ -10,3 +10,7 @@ coverage.xml
 pep8.txt
 .tox/
 photologue/
+.idea/
+.coverage
+*.sqlite3
+*.db
