@@ -11,13 +11,21 @@ var paths = {
     'dist': __dirname + '/static/bundles/'
 }
 
-var modulesDirectories = ['./staticsrc/', './node_modules/'];
+var path = require('path');
+
+var modulesDirectories = ['./node_modules/', './staticsrc/'];
 var excludes = /node_modules/;
 
 module.exports = {
-    //'devtool': 'source-map',
+    'devtool': 'source-map',
     'target': 'web',
     'context': __dirname,
+    'externals': {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
+    },
     'resolve': {
         'modulesDirectories': modulesDirectories,
         'extensions': [
@@ -25,6 +33,9 @@ module.exports = {
             '.js',
             '.css',
             '.scss'
+        ],
+        'root': [
+            path.resolve('./staticsrc/')
         ]
     },
     'entry': [

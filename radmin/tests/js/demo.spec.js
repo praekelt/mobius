@@ -1,21 +1,29 @@
-import 'chai';
-import 'mocha';
+import React from 'react';
+import { expect, assert } from 'chai';
+import { Router } from 'react-router';
 
-describe('karma test with Chai', function() {
-    it('should expose the Chai assert method', function() {
-        assert.ok('everything', 'everything is ok');
-    })
+import { shallow, mount, render } from 'enzyme';
 
-    it('should expose the Chai expect method', function() {
-        expect('foo').to.not.equal('bar');
-    })
+import LoginForm from 'components/organisms/LoginForm';
+import InputField from 'components/atoms/InputField';
+import SubmitButton from 'components/atoms/SubmitButton';
 
-    it('should expose the Chai should property', function() {
-        should.exist(123);
-        (1).should.not.equal(2);
-    })
+describe("Login page suite", function() {
+  it("contains two inputs", function() {
+    const wrapper = shallow(< LoginForm />);
+    expect(wrapper.find(InputField)).to.have.length(2);
+  });
 
-    it('should work with ES6 fat arrow function', () => {
-        (1).should.not.equal(2);
-    })
-})
+  it("contains username and password fields", function() {
+    const wrapper = shallow(< LoginForm />);
+    const inputs = wrapper.find(InputField);
+
+    inputs.forEach(function(input){
+        expect(input.props().type).to.oneOf(['username', 'password']);
+    });
+  });
+
+  it("contains a submit button", function() {
+    expect(shallow(<LoginForm />).contains(<SubmitButton/>)).to.equal(true);
+  });
+});

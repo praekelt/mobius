@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Wed Aug 17 2016 16:04:47 GMT+0200 (SAST)
 
+var path = require('path');
+
 module.exports = function(config) {
   config.set({
 
@@ -12,22 +14,21 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha'],
 
-
     // list of files / patterns to load in the browser
     files: [
+        {pattern: 'tests/js/*_test.js', watched: false}
     ],
-
 
     // list of files to exclude
     exclude: [
+        'node_modules'
     ],
-
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'tests/js/*_test.js': ['webpack']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -63,6 +64,44 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    plugins: [
+        require('karma-mocha'),
+        require('karma-chrome-launcher'),
+        require('karma-webpack')
+    ],
+
+    webpack: { //kind of a copy of your webpack config
+        devtool: 'inline-source-map', //just do inline source maps instead of the default
+        module: {
+            loaders: [
+                {
+                    test: /\.js$/,
+                    exclude: '/node_modules/',
+                    loader: 'babel-loader',
+                    query: {
+                      presets: ['es2015']
+                    }
+                },
+                {
+                    test: /\.json$/,
+                    loader: 'json'
+                },
+            ]
+        },
+         resolve: {
+          'modulesDirectories': ['node_modules'],
+          'extensions': [
+              '',
+              '.js',
+              '.css',
+              '.scss'
+          ],
+          'root': [
+                path.resolve('./staticsrc/')
+          ]
+      },
+    },
   })
 }
