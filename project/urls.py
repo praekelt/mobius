@@ -8,6 +8,7 @@ import rest_framework_extras
 from jmbo.admin import ModelBaseAdmin, ModelBaseAdminForm
 from jmbo import api as jmbo_api
 from post import api as post_api
+from listing import api as listing_api
 
 
 router = routers.DefaultRouter()
@@ -18,6 +19,7 @@ rest_framework_extras.register(router)
 # Register jmbo suite routers
 jmbo_api.register(router)
 post_api.register(router)
+listing_api.register(router)
 
 admin.autodiscover()
 

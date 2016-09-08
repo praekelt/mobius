@@ -14,6 +14,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     "mobius",
+    "listing",
     "jmbo",
     "photologue",
     "category",
