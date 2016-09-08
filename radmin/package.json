@@ -10,7 +10,21 @@
     "test:karma": "./node_modules/karma/bin/karma start karma.conf.js",
     "test:mocha": "NODE_PATH=./staticsrc ./node_modules/.bin/_mocha ./tests/js/*.spec.js --require babel-register",
     "test:coverage": "NODE_PATH=./staticsrc istanbul cover mocha './tests/js/setup.js' './tests/js/*.spec.js' -- --compilers js:babel-core/register --require tests/js/setup.js --recursive -R spec",
+    "test:new": "NODE_PATH=./staticsrc nyc mocha ./tests/js/*.spec.js",
     "hot": "node ./hot-module-server.js"
+  },
+  "nyc": {
+    "include": [
+      "staticsrc/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "text-summary"
+    ],
+    "sourceMap": true,
+    "instrument": true
   },
   "repository": {
     "type": "git",
@@ -41,6 +55,7 @@
     "babel-istanbul": "^0.11.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-istanbul": "^2.0.1",
     "babel-plugin-transform-runtime": "^6.12.0",
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.13.2",
@@ -69,6 +84,7 @@
     "mocha": "^3.0.2",
     "nock": "^8.0.0",
     "node-sass": "^3.8.0",
+    "nyc": "^8.1.0",
     "react-addons-test-utils": "^15.3.1",
     "react-hot-loader": "^1.3.0",
     "redux-logger": "^2.5.0",
