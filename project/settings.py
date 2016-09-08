@@ -14,7 +14,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     "mobius",
-    "listing",
     "jmbo",
     "photologue",
     "category",
@@ -22,6 +21,7 @@ INSTALLED_APPS = (
     "django_comments",
     "likes",
     "link",
+    "listing",
     "navbuilder",
     "secretballot",
     "pagination",
