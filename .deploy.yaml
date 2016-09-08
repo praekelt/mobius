@@ -1,3 +1,4 @@
+name: mobius2
 buildscript: scripts/build
 postinstall: scripts/postinstall.sh
 pip:
