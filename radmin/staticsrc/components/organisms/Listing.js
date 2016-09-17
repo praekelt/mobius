@@ -12,7 +12,7 @@ var Listing = React.createClass({
 
     componentDidMount: function() {
         this.serverRequest = Reqwest({
-            url: '/api/v1/post-post/',
+            url: '/api/v1/post-post-permitted/',
             type: 'json',
             method: 'get',
             headers: {

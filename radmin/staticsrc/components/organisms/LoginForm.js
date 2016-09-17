@@ -54,5 +54,4 @@ var LoginForm = React.createClass({
     }
 });
 
-// module.exports = withRouter(LoginForm);
-module.exports = LoginForm;
+module.exports = withRouter(LoginForm);
