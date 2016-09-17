@@ -2,6 +2,8 @@ import React from 'react';
 
 import Reqwest from 'reqwest';
 
+import ListingItem from 'components/molecules/ListingItem'
+
 var Listing = React.createClass({
 
     getInitialState: function () {
@@ -11,16 +13,33 @@ var Listing = React.createClass({
     },
 
     componentDidMount: function() {
+        var token = 'JWT <' + localStorage.token + '>';
+        console.log(token);
         this.serverRequest = Reqwest({
-            url: '/api/v1/post-post-permitted/',
+            url: '/api/v1/post-post/',
             type: 'json',
             method: 'get',
             headers: {
-                'Authorization': 'Token ' + localStorage.token
+                'Authorization': 'JWT' + localStorage.token
             },
             success: function(res) {
                 this.setState({posts: res});
             }.bind(this)
+        })
+
+        this.serverRequest2 = Reqwest({
+            url: '/api-token-verify/',
+            type: 'json',
+            method: 'post',
+            data: {
+                token: localStorage.token
+            },
+            success: function(res) {
+                console.log(res);
+            }.bind(this),
+            error: function(res) {
+                console.log(res);
+            }
         })
     },
 
@@ -32,7 +51,9 @@ var Listing = React.createClass({
         return (
             <ul>
                 {this.state.posts.map(function(post, i){
-                    return <li key={i}>{post.title}</li>;
+                    return <li key={i}>
+                        <ListingItem item={post}/>
+                    </li>;
                 })}
             </ul>
         );

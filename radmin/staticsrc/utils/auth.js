@@ -8,7 +8,7 @@ module.exports = {
         }
         this.getToken(username, pass, (res) => {
             if (res.authenticated) {
-                localStorage.token = res.token
+                localStorage.token = res.token;
                 if (callback) callback(true)
             } else {
                 if (callback) callback(false)
