@@ -8,8 +8,8 @@ import Listing from 'components/organisms/Listing';
 var App = React.createClass({
 
     logoutHandler: function() {
-        auth.logout()
-        this.props.router.replace('/radmin/login/')
+        auth.logout();
+        this.props.router.replace('/radmin/login/');
     },
 
     render: function () {

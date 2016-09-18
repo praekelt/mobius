@@ -36,7 +36,7 @@ var LoginForm = React.createClass({
 
     render: function () {
         return (
-            <div>
+            <div className="LoginForm">
                 <form onSubmit={this.handleSubmit}>
                     <InputField type="username"
                                 value={this.state.username}
