@@ -16,7 +16,7 @@ var App = React.createClass({
         return (
             <div>
                 <Listing/>
-                <button onClick={this.logoutHandler}>Log out</button>
+                <button className="Logout" onClick={this.logoutHandler}>Log out</button>
             </div>
         );
     }

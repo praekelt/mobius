@@ -8,13 +8,12 @@ var Listing = React.createClass({
 
     getInitialState: function () {
         return {
-            posts: []
+            posts: [],
+            initial: false
         };
     },
 
     componentDidMount: function() {
-        var token = 'JWT <' + localStorage.token + '>';
-        console.log(token);
         this.serverRequest = Reqwest({
             url: '/api/v1/post-post/',
             type: 'json',
@@ -25,22 +24,11 @@ var Listing = React.createClass({
             success: function(res) {
                 this.setState({posts: res});
             }.bind(this)
-        })
+        });
+    },
 
-        this.serverRequest2 = Reqwest({
-            url: '/api-token-verify/',
-            type: 'json',
-            method: 'post',
-            data: {
-                token: localStorage.token
-            },
-            success: function(res) {
-                console.log(res);
-            }.bind(this),
-            error: function(res) {
-                console.log(res);
-            }
-        })
+    resetActive: function(){
+        this.setState({initial: false});
     },
 
     componentWillUnmount: function () {
@@ -52,9 +40,9 @@ var Listing = React.createClass({
             <ul>
                 {this.state.posts.map(function(post, i){
                     return <li key={i}>
-                        <ListingItem item={post}/>
+                        <ListingItem item={post} initial={this.state.initial} reset={this.resetActive}/>
                     </li>;
-                })}
+                }.bind(this))}
             </ul>
         );
     }

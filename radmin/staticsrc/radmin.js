@@ -2,6 +2,8 @@
  * Created by peterringelmann on 2016/08/18.
  */
 
+require('./radmin.scss');
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';

@@ -8,25 +8,32 @@ var ListingItem = React.createClass({
 
     getInitialState: function () {
         return {
-            active: false,
+            active: this.props.initial,
             title: this.props.item.title,
             subtitle: this.props.item.subtitle,
             description: this.props.item.description
         };
     },
 
+    componentWillReceiveProps: function () {
+        this.setState({active: this.props.initial});
+    },
+
     setActive: function() {
-        this.setState({active: true});
+        this.props.reset();
+        setTimeout(function(){
+            this.setState({active: true});
+        }.bind(this), 0)
     },
 
     submitChanges: function() {
         this.setState({active: false});
         this.serverRequest = Reqwest({
             url: this.props.item.url,
-            type: 'json',
             method: 'put',
+            type: 'json',
             headers: {
-                'Authorization': 'Token ' + localStorage.token
+                'Authorization': 'JWT ' + localStorage.token
             },
             data: {
                 title: this.state.title,
@@ -35,6 +42,9 @@ var ListingItem = React.createClass({
             },
             success: function(res) {
                 this.setState({posts: res});
+            }.bind(this),
+            error: function(res) {
+                console.log(res);
             }.bind(this)
         })
     },
@@ -50,38 +60,33 @@ var ListingItem = React.createClass({
         var activeContent = undefined;
         if (this.state.active) {
             activeContent = <div className="ListingItem-content">
-                <input
-                    type="text"
-                    name="title"
-                    value={this.state.title}
-                    onChange={this.onUpdate}
-                />
+                <label>Subtitle</label>
                 <input
                     type="text"
                     name="subtitle"
                     value={this.state.subtitle}
                     onChange={this.onUpdate}
                 />
+                <label>Description</label>
                 <input
                     type="text"
                     name="description"
                     value={this.state.description}
                     onChange={this.onUpdate}
                 />
-                <button className="closeButton" onClick={this.submitChanges}>Finished</button>
+                <button className="closeButton" onClick={this.submitChanges}></button>
                 </div>
-        } else {
-            activeContent = <input
+        }
+        return (
+            <div className={ this.state.active ? 'ListingItem is-active' : 'ListingItem' }>
+                <label>Title</label>
+                <input
                     type="text"
                     name="title"
                     value={this.state.title}
                     onChange={this.onUpdate}
-                    onClick={this.setActive}
+                    onClick={this.state.active ? null : this.setActive}
                 />
-        }
-
-        return (
-            <div className="ListingItem">
                 { activeContent }
             </div>
         );
