@@ -14,3 +14,4 @@ photologue/
 .coverage
 *.sqlite3
 *.db
+.DS_Store
