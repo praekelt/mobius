@@ -6,6 +6,7 @@
 -e git+https://github.com/praekelt/django-link.git@develop#egg=django-link
 -e git+https://github.com/praekelt/django-navbuilder.git@develop#egg=django-navbuilder
 -e git+https://github.com/praekelt/jmbo-listing.git@develop#egg=jmbo-listing
+-e git+https://github.com/praekelt/django-formfactory.git@develop#egg=django-formfactory
 
 Django==1.9.6
 django-category==1.9

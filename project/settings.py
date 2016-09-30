@@ -19,6 +19,7 @@ INSTALLED_APPS = (
     "category",
     "ckeditor",
     "django_comments",
+    "formfactory",
     "likes",
     "link",
     "listing",
