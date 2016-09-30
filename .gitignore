@@ -4,6 +4,7 @@
 ve/
 build/
 dist/
+src/
 *.swo
 /docs/_build
 coverage.xml
