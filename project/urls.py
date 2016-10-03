@@ -32,6 +32,7 @@ urlpatterns = [
     url(r"^post/", include("post.urls", namespace="post")),
     url(r"^link/", include("link.urls", namespace="link")),
     url(r"^navbuilder/", include("navbuilder.urls", namespace="navbuilder")),
+    url(r"^formfactory/", include("formfactory.urls", namespace="formfactory")),
     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
 ]
