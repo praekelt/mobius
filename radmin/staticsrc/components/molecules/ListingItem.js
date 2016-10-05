@@ -53,7 +53,9 @@ var ListingItem = React.createClass({
                 slug: this.state.slug
             },
             success: function(res) {
+                console.log('Patched: ', res);
                 this.setState({posts: res});
+                this.props.updatePosts();
             }.bind(this),
             error: function(res) {
                 auth.logout();

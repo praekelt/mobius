@@ -29,8 +29,8 @@ var Listing = React.createClass({
                 'Authorization': 'JWT ' + localStorage.token
             },
             success: function(res) {
-                console.log(res);
                 this.setState({posts: res});
+                console.log(this.state.posts);
             }.bind(this),
             error: function(res) {
                 auth.logout();
