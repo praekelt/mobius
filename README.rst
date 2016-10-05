@@ -6,3 +6,7 @@ Mobius
    :align: center
    :alt: Travis
 
+.. figure:: https://img.shields.io/codecov/c/github/praekelt/mobius/feature%2Freact-admin.svg?maxAge=2592000
+   :align: center
+   :alt: Codecov
+

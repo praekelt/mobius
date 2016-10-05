@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "rest_framework_extras"
+    "rest_framework_extras",
+    "radmin",
+    "webpack_loader"
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,6 +116,16 @@ CKEDITOR_UPLOAD_PATH = expanduser("~")
 
 MEDIA_ROOT = "%s/media/" % BASE_DIR
 MEDIA_URL = "/media/"
+
+WEBPACK_LOADER = {
+    'RADMIN': {
+        'BUNDLE_DIR_NAME': '/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'radmin', 'webpack-map.json'),
+    }
+}
+
+
+
 
 try:
     import local_settings

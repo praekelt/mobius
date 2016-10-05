@@ -35,6 +35,7 @@ urlpatterns = [
     url(r"^formfactory/", include("formfactory.urls", namespace="formfactory")),
     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
+    url(r"^radmin/", include("radmin.urls"))
 ]
 
 if settings.DEBUG:
