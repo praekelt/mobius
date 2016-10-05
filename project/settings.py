@@ -19,7 +19,11 @@ INSTALLED_APPS = (
     "category",
     "ckeditor",
     "django_comments",
+    "formfactory",
     "likes",
+    "link",
+    "listing",
+    "navbuilder",
     "secretballot",
     "pagination",
     "post",
@@ -48,7 +52,7 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
+TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -57,7 +61,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
-)
+]
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": TEMPLATE_CONTEXT_PROCESSORS,
+        },
+    },
+]
 
 ROOT_URLCONF = "project.urls"
 
@@ -111,3 +126,14 @@ WEBPACK_LOADER = {
 
 
 
+
+try:
+    import local_settings
+    from local_settings import *
+except ImportError:
+    pass
+else:
+    if hasattr(local_settings, "configure"):
+        lcl = locals()
+        di = local_settings.configure(**locals())
+        lcl.update(**di)
