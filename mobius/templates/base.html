@@ -1,7 +1,35 @@
-{% comment %}
-Shim so tests that render detail pages work.
-{% endcomment %}
+{% load static %}
 
-{% block content %}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block extra_title %}Mobius{% endblock extra_title %}</title>
 
+        {% block extra_meta %}
+        <meta name="description" content="Mobius" />
+        {% endblock extra_meta %}
+
+        <!-- Add default css -->
+        {% block extra_css %}{% endblock extra_css %}
+    </head>
+
+    <body>
+        <header>{% block header %}{% endblock header %}</header>
+        {% block message %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="Message {% if message.tags %}Message-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                        <a class="Icon Icon-close" href="#js"></a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+        {% block content %}{% endblock content %}
+        <footer>{% block footer %}{% endblock footer %}</footer>
+
+        <!-- Add default js -->
+        {% block extra_js %}{% endblock extra_js %}
+</html>

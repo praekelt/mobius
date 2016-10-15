@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load navbuilder_tags %}
+
+{% block header %}
+    <div class="Header">
+        {% render_menu "header" %}
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <h1>Welcome To Mobius</h1>
+{% endblock %}

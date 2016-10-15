@@ -3,9 +3,8 @@ from django.contrib import admin
 from django.conf import settings
 
 from rest_framework_jwt.views import obtain_jwt_token
-from rest_framework import routers, serializers, viewsets
+from rest_framework import routers
 import rest_framework_extras
-from jmbo.admin import ModelBaseAdmin, ModelBaseAdminForm
 from jmbo import api as jmbo_api
 from post import api as post_api
 from listing import api as listing_api
@@ -32,8 +31,13 @@ urlpatterns = [
     url(r"^post/", include("post.urls", namespace="post")),
     url(r"^link/", include("link.urls", namespace="link")),
     url(r"^navbuilder/", include("navbuilder.urls", namespace="navbuilder")),
-    url(r"^formfactory/", include("formfactory.urls", namespace="formfactory")),
-    url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    url(
+        r"^formfactory/", include("formfactory.urls", namespace="formfactory")
+    ),
+    url(
+        r"^api-auth/",
+        include("rest_framework.urls", namespace="rest_framework")
+    ),
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
     url(r"^radmin/", include("radmin.urls"))
 ]
