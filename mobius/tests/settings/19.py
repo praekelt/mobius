@@ -19,16 +19,18 @@ INSTALLED_APPS = (
     "category",
     "ckeditor",
     "django_comments",
+    "formfactory",
     "likes",
     "link",
     "listing",
     "navbuilder",
-    "secretballot",
     "pagination",
     "post",
     "preferences",
-    "ultracache",
+    "secretballot",
+    "simple_autocomplete",
     "sites_groups",
+    "ultracache",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,8 +39,11 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
-    "rest_framework_extras"
+    "rest_framework_extras",
+    "radmin",
+    "webpack_loader"
 )
 
 MIDDLEWARE_CLASSES = (

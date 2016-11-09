@@ -24,12 +24,14 @@ INSTALLED_APPS = (
     "link",
     "listing",
     "navbuilder",
-    "secretballot",
     "pagination",
     "post",
     "preferences",
-    "ultracache",
+    "secretballot",
+    "simple_autocomplete",
     "sites_groups",
+    "ultracache",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -37,6 +39,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
     "rest_framework_extras",
     "radmin",
@@ -123,9 +126,6 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'radmin', 'webpack-map.json'),
     }
 }
-
-
-
 
 try:
     import local_settings
