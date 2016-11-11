@@ -10,3 +10,9 @@ Mobius
    :align: center
    :alt: Codecov
 
+Installation
+------------
+
+Don't! Mobius is a platform, not a Django project. Use mobius-skeleton to get a Mobius
+project up and running.
+
