@@ -9,4 +9,3 @@ install:
   - pip install coverage==4.0.3
 script:
   - coverage run ./manage.py test mobius.tests --settings=mobius.tests.settings.19
-  - coverage report

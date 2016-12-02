@@ -6,6 +6,7 @@
 -e git+https://github.com/praekelt/django-link.git@develop#egg=django-link
 -e git+https://github.com/praekelt/django-navbuilder.git@develop#egg=django-navbuilder
 -e git+https://github.com/praekelt/jmbo-listing.git@develop#egg=jmbo-listing
+-e git+https://github.com/praekelt/django-formfactory.git@develop#egg=django-formfactory
 
 Django==1.9.6
 django-category==1.9
@@ -21,6 +22,7 @@ django-preferences==0.0.2
 django-sites-groups==1.9.2
 django-sortedm2m==1.2.2
 django-ultracache==1.9.1
+django-webpack-loader==0.3.3
 ExifRead==2.1.2
 Pillow==3.2.0
 psycopg2==2.6.1
@@ -30,3 +32,5 @@ requests==2.10.0
 six==1.9.0
 djangorestframework==3.4.4
 djangorestframework-jwt==1.8.0
+django-simple-autocomplete==1.9
+django-form-renderers==0.1.1

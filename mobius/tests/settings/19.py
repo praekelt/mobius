@@ -1,10 +1,14 @@
 import os
+import glob
 from os.path import expanduser
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.join(
+    glob.glob(os.environ["VIRTUAL_ENV"] +  "/lib/*/site-packages")[0],
+    "skeleton"
+)
 
-SECRET_KEY = "wl4-t33ls0iiy)t93m1^72(ouy8#1s)m%n58@%6x55cv4n^%#3"
+SECRET_KEY = "SECRET_KEY"
 
 DEBUG = True
 
@@ -19,16 +23,19 @@ INSTALLED_APPS = (
     "category",
     "ckeditor",
     "django_comments",
+    "formfactory",
+    "form_renderers",
     "likes",
     "link",
     "listing",
     "navbuilder",
-    "secretballot",
     "pagination",
     "post",
     "preferences",
-    "ultracache",
+    "secretballot",
+    "simple_autocomplete",
     "sites_groups",
+    "ultracache",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,8 +44,11 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
-    "rest_framework_extras"
+    "rest_framework_extras",
+    "radmin",
+    "webpack_loader"
 )
 
 MIDDLEWARE_CLASSES = (
