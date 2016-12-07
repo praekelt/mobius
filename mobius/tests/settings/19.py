@@ -22,6 +22,7 @@ INSTALLED_APPS = (
     "photologue",
     "category",
     "ckeditor",
+    "crum",
     "django_comments",
     "formfactory",
     "form_renderers",
@@ -58,6 +59,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "crum.CurrentRequestUserMiddleware",
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -70,6 +72,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
 )
+
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": False,
+        "OPTIONS": {
+            "context_processors": TEMPLATE_CONTEXT_PROCESSORS,
+            "loaders": [
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ]
+        },
+    },
+]
 
 ROOT_URLCONF = "mobius.tests.urls"
 
