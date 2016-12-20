@@ -35,3 +35,4 @@ djangorestframework-jwt==1.8.0
 django-simple-autocomplete==1.9
 django-form-renderers==0.1.1
 django-crum==0.7.1
+django-layers-hr==1.10.0
