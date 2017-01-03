@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     "jmbo",
     "photologue",
     "category",
-    "ckeditor",
     "crum",
     "django_comments",
     "formfactory",
