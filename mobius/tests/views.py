@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+
 from rest_framework import generics
 from rest_framework import serializers
 from rest_framework.permissions import IsAuthenticated
@@ -29,3 +31,7 @@ class MockListView(generics.ListAPIView):
         queryset = self.get_queryset(request)
         serializer = ModelBaseSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+def function_view(request):
+    return HttpResponse("Function view")

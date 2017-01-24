@@ -17,6 +17,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
+    "mobius.tests",
     "mobius",
     "jmbo",
     "photologue",

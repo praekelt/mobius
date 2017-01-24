@@ -1,14 +1,14 @@
-from django.conf.urls import include,url
-
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.conf import settings
+from django.views.generic import TemplateView
 
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework import routers
 import rest_framework_extras
 
-from mobius.tests.views import MockListView
+from mobius.tests.views import MockListView, function_view
+
 
 router = routers.DefaultRouter()
 
@@ -28,5 +28,12 @@ urlpatterns = [
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
     url(r"^radmin/", include("radmin.urls")),
     url(r"^modelbase-list/$", MockListView.as_view(), name="modelbase_list"),
+    url(
+        r"^class-view/$",
+        TemplateView.as_view(template_name="tests/class_view.html"),
+        name="class-view"
+    ),
+    url(r"^function-view/$", function_view, name="function-view"),
+
 ]
 
