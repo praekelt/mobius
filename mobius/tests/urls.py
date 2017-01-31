@@ -7,7 +7,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework import routers
 import rest_framework_extras
 
-from mobius.tests.views import MockListView, function_view
+from mobius.tests.views import MockListView, ClassView, function_view
 
 
 router = routers.DefaultRouter()
@@ -30,7 +30,7 @@ urlpatterns = [
     url(r"^modelbase-list/$", MockListView.as_view(), name="modelbase_list"),
     url(
         r"^class-view/$",
-        TemplateView.as_view(template_name="tests/class_view.html"),
+        ClassView.as_view(),
         name="class-view"
     ),
     url(r"^function-view/$", function_view, name="function-view"),

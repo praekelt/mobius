@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 
 from rest_framework import generics
 from rest_framework import serializers
@@ -31,6 +32,10 @@ class MockListView(generics.ListAPIView):
         queryset = self.get_queryset(request)
         serializer = ModelBaseSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+class ClassView(TemplateView):
+    template_name = "tests/class_view.html"
 
 
 def function_view(request):
