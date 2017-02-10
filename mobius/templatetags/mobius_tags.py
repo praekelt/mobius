@@ -16,18 +16,12 @@ def if_has_bundle(parser, token):
 
     bits = token.split_contents()[1:]
     bundle_name = bits[0]
-    extension = config = ""
-    args = []
-    if len(bits) > 1:
-        args.append(bits[1])
-    if len(bits) > 2:
-        args.append(bits[2])
     nodelist = parser.parse(("end_if_has_bundle",))
 
     token = parser.next_token()
     assert token.contents == "end_if_has_bundle"
 
-    return IfHasBundleNode(nodelist, bundle_name, *args)
+    return IfHasBundleNode(nodelist, bundle_name, *bits[1:])
 
 
 class IfHasBundleNode(template.Node):

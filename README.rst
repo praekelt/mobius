@@ -1,6 +1,6 @@
 Mobius
 ======
-**Mobius is a platform that ties together Jmbo and Mote.**
+**Mobius is a product delivery platform built on Django.**
 
 .. figure:: https://travis-ci.org/praekelt/mobius.svg?branch=develop
    :align: center
