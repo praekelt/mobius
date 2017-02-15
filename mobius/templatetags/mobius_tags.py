@@ -72,7 +72,11 @@ class RenderViewNode(template.defaulttags.URLNode):
 
         # Call the view. Let any error propagate.
         context.push()
+        # Context push does not make a deepcopy of the request, so handle the
+        # method manually.
         request = context["request"]
+        method = request.method
+        request.method = "GET"
         result = view(request, *args, **kwargs)
         if isinstance(result, template.response.TemplateResponse):
             # The result of a class based view
@@ -82,5 +86,6 @@ class RenderViewNode(template.defaulttags.URLNode):
             # Old-school view
             html = result.content
         context.pop()
+        request.method = method
 
         return html

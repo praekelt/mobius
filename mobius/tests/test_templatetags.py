@@ -23,3 +23,16 @@ class TemplateTagsTestCase(TestCase):
         self.assertHTMLEqual("""Class view
             Function view""", result
         )
+
+    def test_render_view_post(self):
+        request = self.factory.post("/")
+        t = template.Template("""{% load mobius_tags %}
+            {% render_view "class-view" %}
+            {% render_view "function-view" %}"""
+        )
+        result = t.render(template.Context({
+            "request": request
+        }))
+        self.assertHTMLEqual("""Class view
+            Function view""", result
+        )
