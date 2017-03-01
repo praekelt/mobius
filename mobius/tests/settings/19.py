@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     "rest_framework",
     "rest_framework_extras",
     "radmin",
+    "template_multiprocessing",
     "webpack_loader"
 )
 
@@ -131,3 +132,13 @@ CKEDITOR_UPLOAD_PATH = expanduser("~")
 
 MEDIA_ROOT = "%s/media/" % BASE_DIR
 MEDIA_URL = "/media/"
+
+TEMPLATE_MULTIPROCESSING = {"enabled": True}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": "127.0.0.1:11211",
+        "KEY_PREFIX": "mob",
+    }
+}

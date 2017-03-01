@@ -4,6 +4,7 @@ from django import template
 from django.core.urlresolvers import resolve, get_script_prefix
 from django.http import HttpResponse
 
+from template_multiprocessing.decorators import multiprocess
 from webpack_loader.templatetags.webpack_loader import _get_bundle
 
 
@@ -61,6 +62,7 @@ def render_view(parser, token):
     return RenderViewNode(result.view_name, result.args, result.kwargs, result.asvar)
 
 
+@multiprocess()
 class RenderViewNode(template.defaulttags.URLNode):
 
     def render(self, context):
