@@ -4,7 +4,13 @@ from django import template
 from django.core.urlresolvers import resolve, get_script_prefix
 from django.http import HttpResponse
 
-from webpack_loader.templatetags.webpack_loader import _get_bundle
+try:
+    # webpack_loader 0.5.0
+    from webpack_loader.utils import _get_bundle
+    from webpack_loader import exceptions
+except ImportError:
+    # webpack_loader 0.3.3
+    from webpack_loader.templatetags.webpack_loader import _get_bundle
 
 
 register = template.Library()
@@ -49,8 +55,9 @@ class IfHasBundleNode(template.Node):
         try:
             _get_bundle(bundle_name, extension, config)
             return self.nodelist.render(context)
-        except KeyError:
+        except KeyError, exceptions.WebpackBundleLookupError:
             return ""
+
 
 
 @register.tag
