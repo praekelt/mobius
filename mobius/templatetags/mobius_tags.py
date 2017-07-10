@@ -7,10 +7,15 @@ from django.http import HttpResponse
 try:
     # webpack_loader 0.5.0
     from webpack_loader.utils import _get_bundle
-    from webpack_loader import exceptions
 except ImportError:
     # webpack_loader 0.3.3
     from webpack_loader.templatetags.webpack_loader import _get_bundle
+
+try:
+    from webpack_loader.exceptions import WebpackBundleLookupError
+except ImportError:
+    class WebpackBundleLookupError(object):
+        pass
 
 
 register = template.Library()
@@ -55,7 +60,7 @@ class IfHasBundleNode(template.Node):
         try:
             _get_bundle(bundle_name, extension, config)
             return self.nodelist.render(context)
-        except KeyError, exceptions.WebpackBundleLookupError:
+        except KeyError, WebpackBundleLookupError:
             return ""
 
 
