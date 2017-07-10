@@ -12,9 +12,13 @@ except ImportError:
     from webpack_loader.templatetags.webpack_loader import _get_bundle
 
 try:
+    # webpack_loader 0.5.0
     from webpack_loader.exceptions import WebpackBundleLookupError
 except ImportError:
-    class WebpackBundleLookupError(object):
+    # webpack_loader 0.3.3
+    # FIXME: jw&phala, @hedley we dont know how to do this cleaner.
+    # TODO: this is here for backwards compatibility
+    class WebpackBundleLookupError(Exception):
         pass
 
 
@@ -60,7 +64,7 @@ class IfHasBundleNode(template.Node):
         try:
             _get_bundle(bundle_name, extension, config)
             return self.nodelist.render(context)
-        except KeyError, WebpackBundleLookupError:
+        except (KeyError, WebpackBundleLookupError):
             return ""
 
 
