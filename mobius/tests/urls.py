@@ -26,7 +26,6 @@ urlpatterns = [
         include("rest_framework.urls", namespace="rest_framework")
     ),
     url(r"^api-auth/$", obtain_jwt_token, name="obtain_token"),
-    url(r"^radmin/", include("radmin.urls")),
     url(r"^modelbase-list/$", MockListView.as_view(), name="modelbase_list"),
     url(
         r"^class-view/$",
