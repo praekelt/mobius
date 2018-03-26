@@ -5,7 +5,7 @@ cache: pip
 python:
   - "2.7"
 install:
-  - pip install -r mobius/tests/requirements/19.txt
+  - pip install -r mobius/tests/requirements/111.txt
   - pip install coverage==4.0.3
 script:
-  - coverage run ./manage.py test mobius.tests --settings=mobius.tests.settings.19
+  - coverage run ./manage.py test mobius.tests --settings=mobius.tests.settings.111

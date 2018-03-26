@@ -5,7 +5,7 @@ from os.path import expanduser
 
 BASE_DIR = os.path.join(
     glob.glob(os.environ["VIRTUAL_ENV"] +  "/lib/*/site-packages")[0],
-    "skeleton"
+    "mobius"
 )
 
 SECRET_KEY = "SECRET_KEY"
@@ -25,7 +25,6 @@ INSTALLED_APPS = (
     "crum",
     "django_comments",
     "formfactory",
-    "form_renderers",
     "layers",
     "likes",
     "link",
@@ -35,9 +34,8 @@ INSTALLED_APPS = (
     "post",
     "preferences",
     "secretballot",
-    "simple_autocomplete",
-    "sites_groups",
     "ultracache",
+    "sites_groups",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -62,24 +60,23 @@ MIDDLEWARE_CLASSES = (
     "crum.CurrentRequestUserMiddleware",
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages",
-)
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [],
         "APP_DIRS": False,
         "OPTIONS": {
-            "context_processors": TEMPLATE_CONTEXT_PROCESSORS,
+            "context_processors": [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.template.context_processors.request",
+                "django.contrib.messages.context_processors.messages",
+                "preferences.context_processors.preferences_cp"
+            ],
             "loaders": [
                 "django.template.loaders.filesystem.Loader",
                 "django.template.loaders.app_directories.Loader",
@@ -125,8 +122,6 @@ REST_FRAMEWORK = {
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     ),
 }
-
-CKEDITOR_UPLOAD_PATH = expanduser("~")
 
 MEDIA_ROOT = "%s/media/" % BASE_DIR
 MEDIA_URL = "/media/"
