@@ -1,8 +1,8 @@
 import re
 
 from django import template
-from django.core.urlresolvers import resolve, get_script_prefix
 from django.http import HttpResponse
+from django.urls import resolve, get_script_prefix
 
 try:
     # webpack_loader 0.5.0
@@ -66,7 +66,6 @@ class IfHasBundleNode(template.Node):
             return self.nodelist.render(context)
         except (KeyError, WebpackBundleLookupError):
             return ""
-
 
 
 @register.tag
