@@ -4,6 +4,7 @@ from django.views import generic
 from mobius import views
 
 
+app_name = "mobius"
 urlpatterns = [
     url(
         r"^$",
