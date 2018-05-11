@@ -3,6 +3,7 @@ import re
 from django import template
 from django.http import HttpResponse
 from django.urls import resolve, get_script_prefix
+from django.utils.encoding import force_text
 
 try:
     # webpack_loader 0.5.0
@@ -95,12 +96,11 @@ class RenderViewNode(template.defaulttags.URLNode):
         result = view(request, *args, **kwargs)
         if isinstance(result, template.response.TemplateResponse):
             # The result of a class based view
-            result.render()
-            html = result.rendered_content
+            html = result.render().rendered_content
         elif isinstance(result, HttpResponse):
             # Old-school view
             html = result.content
         context.pop()
         request.method = method
 
-        return html
+        return force_text(html)
